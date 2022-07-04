@@ -41,7 +41,7 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const Text(
-                    'Discard Edits?',
+                    'Удалить изменения?',
                     style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
@@ -52,7 +52,7 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                     height: 20,
                   ),
                   const Text(
-                    "If you go back now, you'll lose all the edits you've made.",
+                    "Если Вы вернетесь сейчас, совершенные изменения не будут сохранены.",
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
@@ -71,7 +71,7 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                       Navigator.of(context).pop(true);
                     },
                     child: Text(
-                      'Discard',
+                      'Вернуться',
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.redAccent.shade200,
@@ -103,17 +103,16 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                             context: context,
                             saveToGallery: true);
                         if (response) {
-                          _dispose(
-                              context: context, message: 'Successfully saved');
+                          _dispose(context: context, message: 'Сохранено');
                         } else {
                           _dispose(context: context, message: 'Error');
                         }
                       } else {
-                        _dispose(context: context, message: 'Draft Empty');
+                        _dispose(context: context, message: 'Пустой черновик');
                       }
                     },
                     child: const Text(
-                      'Save Draft',
+                      'Сохранить',
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
@@ -135,7 +134,7 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                       Navigator.of(context).pop(false);
                     },
                     child: const Text(
-                      'Cancel',
+                      'Отмена',
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
