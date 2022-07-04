@@ -148,3 +148,39 @@ flutter:
     - family: UnifrakturMaguntia
       fonts:
         - asset: packages/stories_editor/assets/fonts/UnifrakturMaguntia-Regular.ttf
+
+    - family: Lobster
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/Lobster-Regular.ttf
+
+    - family: Pacifico
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/Pacifico-Regular.ttf
+
+    - family: Caveat
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/Caveat-Regular.ttf
+
+    - family: AmaticSC
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/AmaticSC-Regular.ttf
+
+    - family: DotGothic16
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/DotGothic16-Regular.ttf
+
+    - family: Oswald
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/Oswald-Regular.ttf
+
+    - family: PTMono
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/PTMono-Regular.ttf
+
+    - family: YesevaOne
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/YesevaOne-Regular.ttf
+
+    - family: OrelegaOne
+      fonts:
+        - asset: packages/stories_editor/assets/fonts/OrelegaOne-Regular.ttf
