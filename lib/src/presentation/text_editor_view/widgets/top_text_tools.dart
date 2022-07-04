@@ -98,7 +98,7 @@ class TopTextTools extends StatelessWidget {
                           border: Border.all(color: Colors.white, width: 1.5),
                           borderRadius: BorderRadius.circular(15)),
                       child: const Text(
-                        'Done',
+                        'Готово',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
