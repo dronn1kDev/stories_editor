@@ -25,15 +25,15 @@ class TextFieldWidget extends StatelessWidget {
                 child: Stack(
               alignment: Alignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 2),
-                  child: _text(
-                    editorNotifier: editorNotifier,
-                    textNode: _textNode,
-                    controlNotifier: controlNotifier,
-                    paintingStyle: PaintingStyle.fill,
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 2),
+                //   child: _text(
+                //     editorNotifier: editorNotifier,
+                //     textNode: _textNode,
+                //     controlNotifier: controlNotifier,
+                //     paintingStyle: PaintingStyle.fill,
+                //   ),
+                // ),
                 _textField(
                   editorNotifier: editorNotifier,
                   textNode: _textNode,
