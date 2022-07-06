@@ -98,10 +98,9 @@ class _TopToolsState extends State<TopTools> {
                               context: context,
                               saveToGallery: true);
                           if (response) {
-                            Fluttertoast.showToast(msg: 'Successfully saved');
-                            Navigator.pop(context);
+                            Fluttertoast.showToast(msg: 'Сохранено!');
                           } else {
-                            Fluttertoast.showToast(msg: 'Error');
+                            Fluttertoast.showToast(msg: 'Ошибка сохранения!');
                           }
                         }
                       }
