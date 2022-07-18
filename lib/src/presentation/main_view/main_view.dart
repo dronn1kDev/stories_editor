@@ -340,7 +340,7 @@ class _MainViewState extends State<MainView> {
                       ),
 
                       /// bottom tools
-                      if (!kIsWeb)
+                      if (!kIsWeb && !controlNotifier.isTextEditing)
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: BottomTools(
