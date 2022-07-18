@@ -52,6 +52,7 @@ class TextEditingNotifier extends ChangeNotifier {
   int get fontAnimationIndex => _fontAnimationIndex;
   TextAlign get textAlign => _textAlign;
   Color get backGroundColor => _backGroundColor;
+  bool get withBackground => _currentColorBackground != 0;
   bool get isFontFamily => _isFontFamily;
   bool get isTextAnimation => _isTextAnimation;
   PageController get fontFamilyController => _fontFamilyController;
