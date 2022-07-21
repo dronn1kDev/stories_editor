@@ -29,10 +29,12 @@ class StoriesEditor extends StatefulWidget {
   final Widget? middleBottomWidget;
 
   /// on done
-  final Function(String)? onDone;
+  final Future<void> Function(String)? onDone;
 
   /// on done button Text
   final Widget? onDoneButtonStyle;
+
+  final Widget? onDoneButtonStyleWhenBuilding;
 
   /// on back pressed
   final Future<bool>? onBackPress;
@@ -56,6 +58,7 @@ class StoriesEditor extends StatefulWidget {
       this.isCustomFontList,
       this.onBackPress,
       this.onDoneButtonStyle,
+      this.onDoneButtonStyleWhenBuilding,
       this.editorBackgroundColor,
       this.galleryThumbnailQuality})
       : super(key: key);
@@ -104,6 +107,7 @@ class _StoriesEditorState extends State<StoriesEditor> {
         gradientColors: widget.gradientColors,
         colorList: widget.colorList,
         onDoneButtonStyle: widget.onDoneButtonStyle,
+        onDoneButtonStyleWhenBuilding: widget.onDoneButtonStyleWhenBuilding,
         onBackPress: widget.onBackPress,
         editorBackgroundColor: widget.editorBackgroundColor,
         galleryThumbnailQuality: widget.galleryThumbnailQuality,

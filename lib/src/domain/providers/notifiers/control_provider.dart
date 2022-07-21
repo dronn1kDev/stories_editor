@@ -112,4 +112,13 @@ class ControlNotifier extends ChangeNotifier {
     _isRenderingWidget = rendering;
     notifyListeners();
   }
+
+  bool _isImageBuilding = false;
+  bool get isImageBuilding => _isImageBuilding;
+  set isImageBuilding(bool newValue) {
+    if (_isImageBuilding ^ newValue) {
+      _isImageBuilding = newValue;
+      notifyListeners();
+    }
+  }
 }

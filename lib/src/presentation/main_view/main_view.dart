@@ -46,10 +46,12 @@ class MainView extends StatefulWidget {
   final Widget? middleBottomWidget;
 
   /// on done
-  final Function(String)? onDone;
+  final Future<void> Function(String)? onDone;
 
   /// on done button Text
   final Widget? onDoneButtonStyle;
+
+  final Widget? onDoneButtonStyleWhenBuilding;
 
   /// on back pressed
   final Future<bool>? onBackPress;
@@ -72,6 +74,7 @@ class MainView extends StatefulWidget {
       this.gradientColors,
       this.onBackPress,
       this.onDoneButtonStyle,
+      this.onDoneButtonStyleWhenBuilding,
       this.editorBackgroundColor,
       this.galleryThumbnailQuality})
       : super(key: key);
@@ -360,12 +363,13 @@ class _MainViewState extends State<MainView> {
                                 controlNotifier: controlNotifier,
                                 renderingNotifier: renderingNotifier,
                                 saveOnGallery: false),
-                            onDone: (bytes) {
-                              setState(() {
-                                widget.onDone!(bytes);
-                              });
+                            onDone: (bytes) async {
+                              await widget.onDone!(bytes);
+                              setState(() {});
                             },
                             onDoneButtonStyle: widget.onDoneButtonStyle,
+                            onDoneButtonStyleWhenBuilding:
+                                widget.onDoneButtonStyleWhenBuilding,
                             editorBackgroundColor: widget.editorBackgroundColor,
                           ),
                         ),

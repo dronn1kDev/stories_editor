@@ -99,7 +99,7 @@ class _ExampleState extends State<Example> {
                                 galleryThumbnailQuality: 300,
                                 editorBackgroundColor: colors[colorIndex],
                                 //isCustomFontList: true,
-                                onDone: (uri) {
+                                onDone: (uri) async {
                                   debugPrint(uri);
                                   Share.shareFiles([uri]);
                                 },

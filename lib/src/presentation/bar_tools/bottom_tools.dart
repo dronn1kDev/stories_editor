@@ -13,8 +13,9 @@ import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 class BottomTools extends StatelessWidget {
   final GlobalKey contentKey;
-  final void Function(String imageUri) onDone;
+  final Future<void> Function(String imageUri) onDone;
   final Widget? onDoneButtonStyle;
+  final Widget? onDoneButtonStyleWhenBuilding;
   final Function renderWidget;
 
   /// editor background color
@@ -25,8 +26,36 @@ class BottomTools extends StatelessWidget {
       required this.onDone,
       required this.renderWidget,
       this.onDoneButtonStyle,
+      this.onDoneButtonStyleWhenBuilding,
       this.editorBackgroundColor})
       : super(key: key);
+
+  Widget get doneButtonStyle =>
+      onDoneButtonStyle ??
+      Container(
+        padding: const EdgeInsets.only(left: 12, right: 5, top: 4, bottom: 4),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: Colors.white, width: 1.5)),
+        child: Row(mainAxisSize: MainAxisSize.min, children: const [
+          Text(
+            'Share',
+            style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 1.5,
+                fontSize: 16,
+                fontWeight: FontWeight.w400),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+              size: 15,
+            ),
+          ),
+        ]),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -147,69 +176,47 @@ class BottomTools extends StatelessWidget {
                   child: StatefulBuilder(
                     builder: (_, setState) {
                       return AnimatedOnTapButton(
-                          onTap: () async {
-                            String pngUri;
-                            if (paintingNotifier.lines.isNotEmpty ||
-                                itemNotifier.draggableWidget.isNotEmpty) {
-                              for (var element
-                                  in itemNotifier.draggableWidget) {
-                                if (element.animationType !=
-                                    TextAnimationType.none) {
-                                  setState(() {
-                                    _createVideo = true;
-                                  });
-                                }
-                              }
-                              if (_createVideo) {
-                                debugPrint('creating video');
-                                await renderWidget();
-                              } else {
-                                debugPrint('creating image');
-                                await takePicture(
-                                        contentKey: contentKey,
-                                        context: context,
-                                        saveToGallery: false)
-                                    .then((bytes) {
-                                  if (bytes != null) {
-                                    pngUri = bytes;
-                                    onDone(pngUri);
-                                  } else {}
+                        onTap: () async {
+                          if (controlNotifier.isImageBuilding) {
+                            return;
+                          } else {
+                            controlNotifier.isImageBuilding = true;
+                          }
+                          String pngUri;
+                          if (paintingNotifier.lines.isNotEmpty ||
+                              itemNotifier.draggableWidget.isNotEmpty) {
+                            for (var element in itemNotifier.draggableWidget) {
+                              if (element.animationType !=
+                                  TextAnimationType.none) {
+                                setState(() {
+                                  _createVideo = true;
                                 });
                               }
                             }
-                            setState(() {
-                              _createVideo = false;
-                            });
-                          },
-                          child: onDoneButtonStyle ??
-                              Container(
-                                padding: const EdgeInsets.only(
-                                    left: 12, right: 5, top: 4, bottom: 4),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    border: Border.all(
-                                        color: Colors.white, width: 1.5)),
-                                child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Text(
-                                        'Share',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            letterSpacing: 1.5,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 5),
-                                        child: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                      ),
-                                    ]),
-                              ));
+                            if (_createVideo) {
+                              debugPrint('creating video');
+                              await renderWidget();
+                            } else {
+                              debugPrint('creating image');
+                              final bytes = await takePicture(
+                                  contentKey: contentKey,
+                                  context: context,
+                                  saveToGallery: false);
+                              if (bytes != null) {
+                                pngUri = bytes;
+                                await onDone(pngUri);
+                              }
+                            }
+                          }
+                          setState(() {
+                            _createVideo = false;
+                          });
+                          controlNotifier.isImageBuilding = false;
+                        },
+                        child: !controlNotifier.isImageBuilding
+                            ? doneButtonStyle
+                            : onDoneButtonStyleWhenBuilding ?? doneButtonStyle,
+                      );
                     },
                   ),
                 ),
