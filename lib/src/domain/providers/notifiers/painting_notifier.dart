@@ -14,6 +14,8 @@ class PaintingNotifier extends ChangeNotifier {
   /// line width
   double _lineWidth = 10;
 
+  final double topMargin = 55;
+
   /// tool index
   int _selectedToolIndex = 0;
 

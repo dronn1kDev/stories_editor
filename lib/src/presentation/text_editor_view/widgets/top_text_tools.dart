@@ -12,7 +12,7 @@ class TopTextTools extends StatelessWidget {
     return Consumer<TextEditingNotifier>(
       builder: (context, editorNotifier, child) {
         return Container(
-          padding: const EdgeInsets.only(top: 15),
+          margin: const EdgeInsets.only(top: 5),
           child: Stack(
             alignment: Alignment.topCenter,
             children: [

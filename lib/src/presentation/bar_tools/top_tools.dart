@@ -34,7 +34,7 @@ class _TopToolsState extends State<TopTools> {
       builder: (_, controlNotifier, paintingNotifier, itemNotifier, __) {
         return SafeArea(
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.only(top: 5),
             decoration: const BoxDecoration(color: Colors.transparent),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
