@@ -34,14 +34,14 @@ class _FileImageBGState extends State<FileImageBG> {
           currentKey: currentKey,
           paintKey: paintKey,
           stateController: stateController,
-        ).searchPixel(
-            Offset(imageKey.currentState!.context.size!.width / 2, 480));
+        ).searchPixel(Offset(imageKey.currentState!.context.size!.width / 2,
+            imageKey.currentState!.context.size!.height - 1));
         var cd12 = await ColorDetection(
           currentKey: currentKey,
           paintKey: paintKey,
           stateController: stateController,
         ).searchPixel(
-            Offset(imageKey.currentState!.context.size!.width / 2.03, 530));
+            Offset(imageKey.currentState!.context.size!.width / 2, 0));
         color1 = cd1;
         color2 = cd12;
         setState(() {});

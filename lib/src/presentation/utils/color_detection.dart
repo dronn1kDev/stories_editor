@@ -18,14 +18,14 @@ class ColorDetection {
     required this.paintKey,
   });
 
-  Future<dynamic> searchPixel(Offset globalPosition) async {
+  Future<Color> searchPixel(Offset globalPosition) async {
     if (photo == null) {
       await loadSnapshotBytes();
     }
     return _calculatePixel(globalPosition);
   }
 
-  _calculatePixel(Offset globalPosition) {
+  Color _calculatePixel(Offset globalPosition) {
     RenderBox box = currentKey!.currentContext!.findRenderObject() as RenderBox;
     Offset localPosition = box.globalToLocal(globalPosition);
 
