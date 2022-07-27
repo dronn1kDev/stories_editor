@@ -38,7 +38,7 @@ class Sketcher extends CustomPainter {
               taperEnd: 0,
               taperStart: 0,
               capEnd: true,
-              simulatePressure: true,
+              simulatePressure: false,
               capStart: true);
           break;
         case PaintingType.marker:
