@@ -46,6 +46,7 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                     children: <Widget>[
                       const Text(
                         'Удалить изменения?',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
