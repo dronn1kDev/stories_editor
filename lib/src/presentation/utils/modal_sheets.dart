@@ -56,7 +56,7 @@ Future<bool> exitDialog({required context, required contentKey}) async {
                         height: 20,
                       ),
                       const Text(
-                        "Если Вы вернетесь сейчас, совершенные изменения не будут сохранены.kfnsldkfnkdsjfdasjndkajsndkajsndkajnsdkajnsdkjansdn",
+                        "Если Вы вернетесь сейчас, совершенные изменения не будут сохранены.",
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w400,
